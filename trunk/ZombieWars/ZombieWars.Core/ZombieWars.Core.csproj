@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{220294FD-CC50-402B-90BC-D4F5F7F76BF3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ZombieWars.Core</RootNamespace>
+    <AssemblyName>ZombieWars.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Db4objects.Db4o, Version=7.12.132.14217, Culture=neutral, PublicKeyToken=6199cd4f203aa8eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Db4o\Db4objects.Db4o.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Db\Config.cs" />
+    <Compile Include="Db\Db.cs" />
+    <Compile Include="Engine\IGameEngine.cs" />
+    <Compile Include="Engine\IGraphicsEngine.cs" />
+    <Compile Include="Game\Game.cs" />
+    <Compile Include="Game\GameMap.cs" />
+    <Compile Include="Game\IGameMap.cs" />
+    <Compile Include="Game\IGame.cs" />
+    <Compile Include="Maps\MapCellRange.cs" />
+    <Compile Include="Maps\MapPassability.cs" />
+    <Compile Include="PathFinding\GlobalPathBuilder.cs" />
+    <Compile Include="Maps\MapArmorType.cs" />
+    <Compile Include="Maps\MapDirection.cs" />
+    <Compile Include="Maps\IMapDestroyable.cs" />
+    <Compile Include="Maps\IMapPassable.cs" />
+    <Compile Include="Maps\MapAreas.cs" />
+    <Compile Include="Maps\Map.cs" />
+    <Compile Include="Maps\MapArea.cs" />
+    <Compile Include="Maps\MapAreaTransitionPoint.cs" />
+    <Compile Include="Maps\MapCell.cs" />
+    <Compile Include="Maps\MapImage.cs" />
+    <Compile Include="Maps\MapLevel.cs" />
+    <Compile Include="Maps\MapActiveObject.cs" />
+    <Compile Include="Maps\MapMatrix.cs" />
+    <Compile Include="Maps\MapObject.cs" />
+    <Compile Include="Maps\MapPlace.cs" />
+    <Compile Include="Maps\MapPoint.cs" />
+    <Compile Include="Maps\MapSize.cs" />
+    <Compile Include="Maps\MapState\MapAreasState.cs" />
+    <Compile Include="Maps\MapState\MapAreaState.cs" />
+    <Compile Include="PathFinding\LocalPathBuilder.cs" />
+    <Compile Include="Maps\MapState\MapActiveObjectState.cs" />
+    <Compile Include="Maps\MapState\MapAreaTransitionPointState.cs" />
+    <Compile Include="Maps\MapState\MapObjectState.cs" />
+    <Compile Include="Maps\MapState\MapState.cs" />
+    <Compile Include="Maps\MapState\MapCellState.cs" />
+    <Compile Include="Maps\MapState\MapLevelState.cs" />
+    <Compile Include="Maps\MapState\MapPlaceState.cs" />
+    <Compile Include="Maps\MapState\MapVisualObjectState.cs" />
+    <Compile Include="Maps\MapState\MapWallState.cs" />
+    <Compile Include="Maps\MapStorage\MapDeserializeHelper.cs" />
+    <Compile Include="Maps\MapStorage\MapSerializeHelper.cs" />
+    <Compile Include="Maps\MapTile.cs" />
+    <Compile Include="Maps\MapTileSet.cs" />
+    <Compile Include="Maps\MapWall.cs" />
+    <Compile Include="Maps\MapWallMode.cs" />
+    <Compile Include="Maps\MapStorage\MapSerializer.cs" />
+    <Compile Include="Maps\MapVisualObject.cs" />
+    <Compile Include="Npc\Actions\NothingAction.cs" />
+    <Compile Include="Npc\ITarget.cs" />
+    <Compile Include="Npc\NpcState.cs" />
+    <Compile Include="Npc\Quest.cs" />
+    <Compile Include="Npc\ScriptAction.cs" />
+    <Compile Include="Npc\Actions\AttackAction.cs" />
+    <Compile Include="Npc\Fraction.cs" />
+    <Compile Include="Npc\Actions\MoveAction.cs" />
+    <Compile Include="Npc\Npc.cs" />
+    <Compile Include="Npc\INpcAction.cs" />
+    <Compile Include="Npc\NpcType.cs" />
+    <Compile Include="Npc\Script.cs" />
+    <Compile Include="Npc\Targets\MoveTarget.cs" />
+    <Compile Include="Npc\Actions\UseItemAction.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="GameMap\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

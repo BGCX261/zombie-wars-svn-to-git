@@ -1,0 +1,54 @@
+﻿<Window x:Class="MapEditor.TileSetWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:MapEditor"
+        Title="{Binding Caption}" Height="800" Width="1200">    
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Создать" Command="ApplicationCommands.New"/>
+                <MenuItem Header="Открыть" Command="ApplicationCommands.Open"/>
+                <MenuItem Header="Сохранить" Command="ApplicationCommands.Save"/>
+                <MenuItem Header="Сохранить как" Command="ApplicationCommands.SaveAs"/>
+                <MenuItem Header="Закрыть" Command="ApplicationCommands.Close"/>                
+            </MenuItem>
+        </Menu>
+
+        <Grid Margin="0 10 0 0 ">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MinWidth="250" Width="1*"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition MinWidth="300" Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <DockPanel Grid.Column="0">
+
+                <TabControl x:Name="tcTileTypeSelector" DockPanel.Dock="Top">
+                    <TabItem Header="Поверхности" DataContext="{Binding Places}"/>
+                    <TabItem Header="Стены" DataContext="{Binding Walls}"/>
+                    <TabItem Header="Объекты" DataContext="{Binding ActiveObjects}"/>
+                </TabControl>       
+
+                <DataGrid x:Name="dgTileItemSelector"
+                        ItemsSource="{Binding SelectedItem.DataContext, ElementName=tcTileTypeSelector}" 
+                        AutoGenerateColumns="False" RowHeaderWidth="0" CanUserAddRows="True" CanUserDeleteRows="True" SelectionMode="Single" SelectionUnit="FullRow">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Caption}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                
+            </DockPanel>
+
+            <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" ResizeBehavior="PreviousAndNext"/>
+
+            <local:MapObjectViewer Grid.Column="2" TargetObject="{Binding SelectedItem, ElementName=dgTileItemSelector}"/>
+
+            <GridSplitter Grid.Column="3" HorizontalAlignment="Stretch" ResizeBehavior="PreviousAndNext"/>
+
+            <local:PropertyEditor Grid.Column="4" TargetObject="{Binding SelectedItem, ElementName=dgTileItemSelector}" />
+            
+        </Grid>
+    </DockPanel>
+</Window>
